@@ -1,51 +1,98 @@
 import React from 'react';
-import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiPhone, FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-16">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-gray-900 text-white py-12">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* About */}
           <div>
-            <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-              <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-sm">M</div>
-              MtaaniHub
-            </h3>
-            <p className="text-sm">Kila huduma, kila biashara, karibu yako.</p>
+            <h3 className="text-2xl font-bold mb-4">🏘️ MtaaniHub</h3>
+            <p className="text-gray-400">Jukwaa linalotuidi kila huduma na biashara karibu yako.</p>
           </div>
+
+          {/* Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Huduma</h4>
-            <ul className="text-sm space-y-2">
-              <li><a href="#" className="hover:text-blue-400">Tafuta Huduma</a></li>
-              <li><a href="#" className="hover:text-blue-400">Post Listing</a></li>
-              <li><a href="#" className="hover:text-blue-400">Maoni</a></li>
+            <h4 className="text-lg font-semibold mb-4">Kiungo</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link to="/" className="hover:text-white">
+                  Nyumbani
+                </Link>
+              </li>
+              <li>
+                <Link to="/search" className="hover:text-white">
+                  Tafuta
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-white">
+                  Kuhusu Sisi
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-white">
+                  Wasiliana
+                </Link>
+              </li>
             </ul>
           </div>
+
+          {/* Help */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Jua Zaidi</h4>
-            <ul className="text-sm space-y-2">
-              <li><a href="#" className="hover:text-blue-400">Kuhusu Sisi</a></li>
-              <li><a href="#" className="hover:text-blue-400">Maswali Yanayoulizwa Mara Kwa Mara</a></li>
-              <li><a href="#" className="hover:text-blue-400">Blog</a></li>
+            <h4 className="text-lg font-semibold mb-4">Msaada</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <Link to="/faq" className="hover:text-white">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-white">
+                  Masharti
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-white">
+                  Faragha
+                </Link>
+              </li>
+              <li>
+                <Link to="/support" className="hover:text-white">
+                  Usaidizi
+                </Link>
+              </li>
             </ul>
           </div>
+
+          {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Wasiliana</h4>
-            <div className="text-sm space-y-2">
-              <div className="flex items-center gap-2">
+            <h4 className="text-lg font-semibold mb-4">Wasiliana</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li className="flex items-center gap-2">
                 <FiPhone /> +255 XXX XXX XXX
-              </div>
-              <div className="flex items-center gap-2">
-                <FiMail /> hello@mtaanihub.tz
-              </div>
-              <div className="flex items-center gap-2">
-                <FiMapPin /> Dar es Salaam, Tanzania
-              </div>
+              </li>
+              <li>Email: info@mtaanihub.tz</li>
+              <li>Dar es Salaam, Tanzania</li>
+            </ul>
+            <div className="flex gap-4 mt-4">
+              <a href="#" className="hover:text-blue-400">
+                <FiFacebook size={20} />
+              </a>
+              <a href="#" className="hover:text-blue-400">
+                <FiTwitter size={20} />
+              </a>
+              <a href="#" className="hover:text-pink-400">
+                <FiInstagram size={20} />
+              </a>
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-700 pt-8 text-center text-sm">
-          <p>&copy; 2024 MtaaniHub. All rights reserved. | <a href="#" className="hover:text-blue-400">Privacy Policy</a> | <a href="#" className="hover:text-blue-400">Terms & Conditions</a></p>
+
+        <div className="border-t border-gray-700 pt-8 text-center text-gray-400">
+          <p>&copy; 2024 MtaaniHub. Haki zote zimehifadhiwa.</p>
         </div>
       </div>
     </footer>
