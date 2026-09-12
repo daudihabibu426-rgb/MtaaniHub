@@ -2,29 +2,63 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   listings: [],
+  currentListing: null,
   loading: false,
   error: null,
-  total: 0
+  filters: {
+    category: '',
+    location: '',
+    priceMin: 0,
+    priceMax: 10000000,
+    sortBy: 'newest'
+  }
 };
 
 const listingSlice = createSlice({
-  name: 'listings',
+  name: 'listing',
   initialState,
   reducers: {
-    setListings: (state, action) => {
-      state.listings = action.payload.listings;
-      state.total = action.payload.total;
+    fetchListingsStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchListingsSuccess: (state, action) => {
+      state.listings = action.payload;
       state.loading = false;
     },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action) => {
+    fetchListingsFailure: (state, action) => {
+      state.loading = false;
       state.error = action.payload;
+    },
+    fetchListingStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchListingSuccess: (state, action) => {
+      state.currentListing = action.payload;
       state.loading = false;
+    },
+    fetchListingFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.filters = { ...state.filters, ...action.payload };
+    },
+    clearFilters: (state) => {
+      state.filters = initialState.filters;
     }
   }
 });
 
-export const { setListings, setLoading, setError } = listingSlice.actions;
+export const {
+  fetchListingsStart,
+  fetchListingsSuccess,
+  fetchListingsFailure,
+  fetchListingStart,
+  fetchListingSuccess,
+  fetchListingFailure,
+  setFilters,
+  clearFilters
+} = listingSlice.actions;
 export default listingSlice.reducer;

@@ -11,28 +11,35 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setLoading: (state, action) => {
-      state.loading = action.payload;
+    loginStart: (state) => {
+      state.loading = true;
+      state.error = null;
     },
     loginSuccess: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.loading = false;
-      state.error = null;
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       localStorage.setItem('token', action.payload.token);
+    },
+    loginFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    registerStart: (state) => {
+      state.loading = true;
+      state.error = null;
     },
     registerSuccess: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.loading = false;
-      state.error = null;
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       localStorage.setItem('token', action.payload.token);
     },
-    setError: (state, action) => {
-      state.error = action.payload;
+    registerFailure: (state, action) => {
       state.loading = false;
+      state.error = action.payload;
     },
     logout: (state) => {
       state.user = null;
@@ -40,9 +47,12 @@ const authSlice = createSlice({
       state.error = null;
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+    },
+    clearError: (state) => {
+      state.error = null;
     }
   }
 });
 
-export const { setLoading, loginSuccess, registerSuccess, setError, logout } = authSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, registerStart, registerSuccess, registerFailure, logout, clearError } = authSlice.actions;
 export default authSlice.reducer;
