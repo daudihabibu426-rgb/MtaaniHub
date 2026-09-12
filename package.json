@@ -1,0 +1,19 @@
+{
+  "name": "mtaanihub",
+  "version": "1.0.0",
+  "description": "Local marketplace platform for Tanzania",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && nodemon index.js",
+    "dev:client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "node server/index.js"
+  },
+  "keywords": ["marketplace", "local", "tanzania"],
+  "author": "MtaaniHub Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
